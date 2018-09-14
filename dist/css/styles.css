@@ -1,33 +1,135 @@
-* {
-  box-sizing: border-box; }
+* {box-sizing: border-box;}
 
-body {
-  margin: 0; }
-
-body {
-  background: #607D8B; }
-
-h2.starter-txt {
+body{
+  margin: 0;
   font-family: sans-serif;
-  font-size: 36px;
-  font-weight: 200;
-  margin: 40px auto;
-  width: 600px;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  border-bottom: 4px solid #fff;
-  transition: .2s all; }
+}
 
-h2.starter-txt {
-  font-family: sans-serif;
-  font-size: 36px;
-  font-weight: 200;
-  margin: 40px auto;
-  width: 600px;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  border-bottom: 4px solid #fff; }
+main {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 960px;
+  margin : 0 auto;
+}
+img{
+  width: 100%;
+  display: block;
+}
 
-/*# sourceMappingURL=styles.css.map*/
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  background: #333;
+  color: #fff;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+}
+nav .fa-github{
+  font-size: 50px;
+}
+
+nav input {
+  padding: .5rem;
+}
+
+nav > * {
+  margin-right: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-profile-col{
+  width: 25%;
+  padding: .5rem;
+
+}
+
+.user-profile-col i.fas{
+  width: 30px;
+  display: inline-block;
+}
+
+.user-img{
+  border-radius: 8px;
+}
+
+.user-name{
+  font-weight: 700;
+  margin: .25rem 0;
+  font-size: 1.5rem;
+}
+.user-login{
+  color: #aaa;
+  font-size: 1.25rem;
+  margin: .25rem 0;
+  font-weight: 200;
+}
+
+.user-company{
+  margin: .25rem 0;
+}
+
+.user-follow{
+  display: block;
+  background: #ededed;
+  color: #333;
+  border: 1px #ccc solid;
+  border-radius : 4px;
+  padding: .5rem;
+  font-size: .85rem;
+  width: 100%;
+  margin : 1rem 0 ;
+}
+
+.user-blockreport{
+  color: #888;
+  font-weight: 400;
+  padding-bottom: 1.25rem;
+  border-bottom: #888 1px solid;
+}
+
+
+.user-company{
+  margin: .25rem 0;
+  color: #777;
+}
+
+.user-location{
+  margin: .25rem 0;
+  color: #777;
+}
+.user-email{
+  margin: .25rem 0;
+  color: #777;
+}
+.user-blog{
+  margin: .25rem 0;
+  color: #777;
+}
+
+.user-repos-col{
+  width: 75%;
+  padding-left: 1.5rem;
+  color: #333;
+}
+
+
+
+
+.repository{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.repo-stats > * {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}

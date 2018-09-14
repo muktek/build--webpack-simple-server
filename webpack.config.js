@@ -1,10 +1,40 @@
 const webpack = require('webpack')
-const nodeEnv = process.env.NODE_ENV || 'production'
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+let DEVTOOL
+let PLUGIN_LIST = []
+
+if (process.env.NODE_ENV === 'development'){
+  DEVTOOL = 'inline-source-map'
+  PLUGIN_LIST = [
+    new webpack.DefinePlugin({
+        'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV ) }
+    })
+  ]
+}
+
+
+if(process.env.NODE_ENV === 'production'){
+  DEVTOOL = 'source-map'
+  PLUGIN_LIST = [
+     //uglify js
+     new webpack.optimize.UglifyJsPlugin({
+			compress: { warnings: false },
+			output: {comments: false},
+         sourceMap: true
+	  }),
+
+     //env plugin
+	  new webpack.DefinePlugin({
+        'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV ) }
+	  })
+  ]
+}
+
+
 module.exports = {
-  devtool : 'source-map',
+  devtool : DEVTOOL,
   entry:   { filename: './src/index.js' },
   output : { filename: './js/bundle.js', path: `${__dirname}/dist/` },
   context : `${__dirname}` ,
@@ -17,35 +47,8 @@ module.exports = {
           query: {
              presets: ['es2015']
           }
-		 },
-	    {
-		    test: /\.scss$/,
-				 loader: ExtractTextPlugin.extract({fallbackLoader: "style-loader", loader: "css-loader!sass-loader!resolve-url-loader"})
-		 },
-		 {
-			 test: /\.(jpe?g|png|gif|svg)$/i,
-			 loader: 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=../images/&context=./src/images'
 		 }
 	 ]
   },
-  plugins: [
-     //uglify js
-     new webpack.optimize.UglifyJsPlugin({
-			compress: { warnings: false },
-			output: {comments: false},
-         sourceMap: true
-	  }),
-
-     //env plugin
-	  new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
-	  }),
-
-	  new CopyWebpackPlugin([
-	     {from : 'src/images', to: 'images'}
-	  ]),
-
-     //env plugin -- css
-     new ExtractTextPlugin({filename: './css/styles.css', allChunks: true})
-  ]
+  plugins: PLUGIN_LIST
 }

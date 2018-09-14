@@ -13,6 +13,20 @@ const renderFile = require('ejs').renderFile
 //run the express app
 const app = express()
 
+	// if( process.env.NODE_ENV === 'development' ){
+	// 	webpack = require('webpack');
+	// 	webpackMiddleware = require('webpack-dev-middleware');
+	// 	webpackConfig = require('./webpack.config.dev.js');
+	// 	webpackCompiler = webpack(webpackConfig)
+	// 	
+	// 	console.log('using teh webpack!')
+	// 	app.use(webpackMiddleware(webpackCompiler, {
+	// 	   noInfo: true,
+	// 	   publicPath: webpackConfig.output.publicPath
+	// 	}));
+	// }
+
+
 // set port if exists in environment for heroku or live site, else set to 3000 for dev
 const PORT = process.env.PORT || 3000
 
